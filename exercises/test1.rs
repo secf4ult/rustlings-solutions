@@ -9,6 +9,15 @@
 
 // Put your function here!
 // fn ..... {
+fn calculate_price(amount: i32) -> i32 {
+    assert!(amount > 0);
+
+    if amount <= 40 {
+        2 * amount
+    } else {
+        amount
+    }
+}
 
 // Don't modify this function!
 #[test]

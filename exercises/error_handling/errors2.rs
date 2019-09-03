@@ -17,13 +17,20 @@
 // one is a lot shorter! Scroll down for hints to both ways.
 
 use std::num::ParseIntError;
+// use std::num::IntErrorKind;
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let processing_fee = 1;
     let cost_per_item = 5;
-    let qty = item_quantity.parse::<i32>();
-
-    Ok(qty * cost_per_item + processing_fee)
+    // if let Ok(qty)= item_quantity.parse::<i32>() {
+    //     Ok(qty * cost_per_item + processing_fee)
+    // } else {
+    //     Err(ParseIntError { kind: IntErrorKind::InvalidDigit })
+    // }
+    match item_quantity.parse::<i32>() {
+        Ok(qty) => Ok(qty * cost_per_item + processing_fee),
+        Err(e) => Err(e),
+    }
 }
 
 #[cfg(test)]
